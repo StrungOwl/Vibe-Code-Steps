@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Vibe Code — Step by Step</title>
+
+  <!-- Reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+
+  <!-- Op Art theme (self-contained) -->
+  <link rel="stylesheet" href="css/theme.css">
+
+  <!-- p5.js for backgrounds -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+</head>
+<body>
+
+  <!-- p5.js Riley op-art background canvas -->
+  <div id="riley-bg"></div>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Title -->
+      <section class="section-header theme-blue" data-theme="blue" data-transition="zoom">
+        <span class="section-badge badge-blue badge-act">How to Vibe Code</span>
+        <h2>Sydney's Vibe Code Process &amp; Tips</h2>
+        <p class="section-desc">A step-by-step guide to building with AI agents.</p>
+      </section>
+
+      <!-- Step 1: Learn the Fundamentals -->
+      <section class="slide-guide" data-theme="blue" data-transition="slide">
+        <span class="step-badge">Step 1</span>
+        <h3>Learn the Fundamentals</h3>
+        <div class="guide-card" style="max-width: 700px; margin: 0 auto;">
+          <h4>Programming Basics</h4>
+          <p><strong>loops</strong>, <strong>conditional statements</strong>, <strong>variable types</strong>, <strong>functions</strong>, and <strong>data structures</strong></p>
+        </div>
+      </section>
+
+      <!-- Step 2: Choose Your Tool -->
+      <section class="slide-guide" data-theme="blue" data-transition="slide">
+        <span class="step-badge">Step 2</span>
+        <h3>Choose Your Tool</h3>
+        <div class="guide-cards cards-3">
+          <a href="https://www.cursor.com/" target="_blank" class="guide-card" style="text-decoration:none;color:inherit;">
+            <div class="card-color card-color-purple"></div>
+            <h4>Cursor</h4>
+            <p>AI-native code editor with built-in agent capabilities and multi-model support.</p>
+          </a>
+          <a href="https://antigravity.google/" target="_blank" class="guide-card" style="text-decoration:none;color:inherit;">
+            <div class="card-color card-color-green"></div>
+            <h4>Google Antigravity</h4>
+            <p>Google&rsquo;s agent-first IDE powered by Gemini. Free public preview. Agents plan, execute, and verify autonomously.</p>
+          </a>
+          <a href="https://code.visualstudio.com/" target="_blank" class="guide-card" style="text-decoration:none;color:inherit;">
+            <div class="card-color card-color-blue"></div>
+            <h4>VS Code + Claude Code</h4>
+            <p>Claude&rsquo;s CLI agent running inside VS Code. Terminal-native, powerful, and deeply integrated.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Step 3: Understand the AI Landscape -->
+      <section class="slide-guide" data-theme="blue" data-transition="slide">
+        <span class="step-badge">Step 3</span>
+        <h3>Understand the Ever-Evolving AI Landscape</h3>
+        <h3 style="margin-top: 0.6em; font-size: 1.2em;">Choose Your Agentic Platform</h3>
+        <div class="guide-cards cards-2">
+          <div class="guide-card has-popout" tabindex="0">
+            <div class="card-color card-color-coral"></div>
+            <h4>Claude Code</h4>
+            <p>Anthropic&rsquo;s agentic coding CLI.</p>
+            <div class="popout-tooltip">
+              <h5 style="font-family:'Lato',sans-serif;">Claude Code</h5>
+              <p>Anthropic&rsquo;s agentic coding tool that lives in your terminal, understands your entire codebase, and helps you code faster through natural language. It can read issues, write code, run tests, and submit PRs autonomously &mdash; with extensions for VS Code, Cursor, and JetBrains.</p>
+            </div>
+          </div>
+          <div class="guide-card has-popout" tabindex="0">
+            <div class="card-color card-color-purple"></div>
+            <h4>Codex</h4>
+            <p>OpenAI&rsquo;s agentic coding platform.</p>
+            <div class="popout-tooltip">
+              <h5 style="font-family:'Lato',sans-serif;">Codex (OpenAI)</h5>
+              <p>OpenAI&rsquo;s cloud-based agentic coding platform that works on many tasks in parallel using isolated cloud environments. It includes a CLI, an app, and IDE extensions &mdash; supporting autonomous workflows like issue triage, CI/CD monitoring, and code review.</p>
+            </div>
+          </div>
+        </div>
+        <h3 style="margin-top: 0.8em; font-size: 1.3em;">Agent Harnesses</h3>
+        <div class="harness-row">
+          <div class="harness-card has-popout" tabindex="0">
+            <h4>PAI</h4>
+            <p>Personal AI Infrastructure</p>
+            <div class="popout-tooltip">
+              <h5 style="font-family:'Lato',sans-serif;">PAI &mdash; Personal AI Infrastructure</h5>
+              <p>A Claude Code-native agentic platform that connects goals, skills, and memory into a unified system. PAI studies and formulates best practices for responsible AI development, spanning media integrity, workforce impact, justice, transparency, and AI security.</p>
+            </div>
+          </div>
+          <div class="harness-card has-popout" tabindex="0">
+            <h4>OpenClaw</h4>
+            <p>Open-source AI agent framework</p>
+            <div class="popout-tooltip">
+              <h5 style="font-family:'Lato',sans-serif;">OpenClaw</h5>
+              <p>An open-source, self-hosted AI agent daemon that connects 12+ messaging platforms (WhatsApp, Telegram, Discord, iMessage, etc.) to AI coding agents. It ships with 100+ preconfigured skills for shell commands, file management, and web automation &mdash; all running on your own infrastructure with no telemetry.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 4: Research Libraries -->
+      <section class="slide-guide" data-theme="blue" data-transition="slide">
+        <span class="step-badge">Step 4</span>
+        <h3>Research Libraries</h3>
+        <p style="max-width: 900px; margin: 0 auto 0.6em; font-size: 0.85em; opacity: 0.7;">Use AI to research what libraries and frameworks you&rsquo;ll need <em>before</em> your agent starts building.</p>
+        <div style="display: flex; gap: 1.2em; justify-content: center; align-items: flex-start; flex-wrap: wrap; max-width: 1400px; margin: 0 auto;">
+          <div class="guide-card" style="flex: 1; min-width: 280px; max-width: 420px;">
+            <h4>Websites</h4>
+            <ul style="text-align: left; font-size: 0.75em; line-height: 1.8; list-style: none; padding: 0;">
+              <li><strong>React</strong> &mdash; component-based UI</li>
+              <li><strong>Next.js</strong> &mdash; full-stack React framework</li>
+              <li><strong>Tailwind CSS</strong> &mdash; utility-first styling</li>
+              <li><strong>GSAP</strong> &mdash; scroll &amp; motion animation</li>
+              <li><strong>Astro</strong> &mdash; fast static sites</li>
+              <li><strong>Svelte</strong> &mdash; lightweight reactive UI</li>
+            </ul>
+          </div>
+          <div class="guide-card" style="flex: 1; min-width: 280px; max-width: 420px;">
+            <h4>Apps</h4>
+            <ul style="text-align: left; font-size: 0.75em; line-height: 1.8; list-style: none; padding: 0;">
+              <li><strong>Express / Fastify</strong> &mdash; Node.js server</li>
+              <li><strong>Firebase</strong> &mdash; auth, database, hosting</li>
+              <li><strong>Socket.io</strong> &mdash; real-time communication</li>
+              <li><strong>Electron</strong> &mdash; desktop apps with JS</li>
+              <li><strong>React Native</strong> &mdash; cross-platform mobile</li>
+              <li><strong>Supabase</strong> &mdash; open-source backend</li>
+            </ul>
+          </div>
+          <div class="guide-card" style="flex: 1; min-width: 280px; max-width: 420px;">
+            <h4>Art &amp; Creative</h4>
+            <ul style="text-align: left; font-size: 0.75em; line-height: 1.8; list-style: none; padding: 0;">
+              <li><strong>p5.js</strong> &mdash; creative coding &amp; sketches</li>
+              <li><strong>Three.js</strong> &mdash; 3D graphics &amp; WebGL</li>
+              <li><strong>Tone.js</strong> &mdash; audio synthesis &amp; music</li>
+              <li><strong>MediaPipe</strong> &mdash; face, hand &amp; body tracking</li>
+              <li><strong>ml5.js</strong> &mdash; friendly machine learning</li>
+              <li><strong>Shader Park</strong> &mdash; code-driven shaders</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 5: Generate a Project Plan -->
+      <section class="slide-guide" data-theme="blue" data-transition="slide">
+        <span class="step-badge">Step 5</span>
+        <h3>Generate a Project Plan</h3>
+        <div style="display: flex; gap: 1.2em; justify-content: center; align-items: flex-start; flex-wrap: wrap; max-width: 1100px; margin: 0 auto;">
+          <div class="guide-card" style="flex: 1; min-width: 280px; max-width: 380px; text-align: left;">
+            <h4>PRD &mdash; Product Requirements Document</h4>
+            <p style="font-size: 0.82em; line-height: 1.7;">A structured document that defines what you're building.</p>
+            <p style="font-size: 0.78em; margin-top: 0.8em; color: var(--text-secondary);">Use your preferred LLM to help you write and refine it.</p>
+          </div>
+          <div class="guide-card" style="flex: 1; min-width: 280px; max-width: 380px;">
+            <h4>What to Include</h4>
+            <ul style="text-align: left; font-size: 0.75em; line-height: 1.9; list-style: none; padding: 0;">
+              <li>&#x2022; Project overview</li>
+              <li>&#x2022; Libraries &amp; frameworks</li>
+              <li>&#x2022; MCP servers &amp; APIs</li>
+              <li>&#x2022; Playwright CLI</li>
+              <li>&#x2022; Deployment platform</li>
+              <li>&#x2022; Interaction &amp; common behaviors</li>
+              <li>&#x2022; Visual identity</li>
+              <li>&#x2022; Anti-criteria</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 6: Generate a Design -->
+      <section class="slide-guide" data-theme="blue" data-transition="slide">
+        <span class="step-badge">Step 6</span>
+        <h3>Generate a Design</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 0.8em; font-size: 0.85em;">Give your agent something to <em>see</em> &mdash; a visual reference so it knows what to build.</p>
+        <div class="guide-cards cards-3">
+          <div class="guide-card">
+            <h4>Sketch</h4>
+            <p>Draw it on paper or a tablet. Snap a photo and drop it into the chat.</p>
+          </div>
+          <div class="guide-card has-popout" tabindex="0">
+            <div class="card-color card-color-purple"></div>
+            <h4>Figma</h4>
+            <p>Design your layout in Figma, then connect it to your agent with the <strong>Figma MCP</strong>.</p>
+            <div class="popout-tooltip" style="width:520px;">
+              <img src="../Assets/Workflows/AI%20Assisted%20Programming/figmaMockup.png" alt="Figma mockup example" style="width:100%;display:block;margin:0 0 10px;border:1px solid rgba(255,255,255,0.25);">
+              <p>Use Figma to create your mockup, then install the <strong>Figma MCP server</strong> and the <strong>Figma VS Code extension</strong> so your agent can read your designs directly.</p>
+              <p style="margin-top:0.5em;"><a href="https://www.youtube.com/watch?v=Cq-7lFMNESk" target="_blank" style="color:var(--accent-blue);">Watch: Figma MCP Setup</a></p>
+            </div>
+          </div>
+          <div class="guide-card">
+            <h4>AI Image Generation</h4>
+            <p>Prompt an image model (GPT, Nanobanana Pro, etc.) to generate a mockup of your UI or concept.</p>
+          </div>
+        </div>
+        <div style="margin-top: 1em;">
+          <div class="guide-card has-popout" tabindex="0" style="max-width: 500px; margin: 0 auto;">
+            <div class="card-color card-color-green"></div>
+            <h4>Stitch by Google</h4>
+            <p>Turn any screenshot or mockup into code with Google&rsquo;s AI design-to-code tool.</p>
+            <div class="popout-tooltip" style="width:480px;">
+              <p><strong>Stitch</strong> lets you upload a screenshot, wireframe, or mockup and generates front-end code from it &mdash; powered by Gemini. Great for quickly turning a visual idea into a working starting point.</p>
+              <p style="margin-top:0.5em;"><a href="https://stitch.withgoogle.com/" target="_blank" style="color:var(--accent-blue);">stitch.withgoogle.com</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 7: Let Your Agent Build -->
+      <section class="slide-guide" data-theme="blue" data-transition="slide">
+        <span class="step-badge">Step 7</span>
+        <h3>Let Your Agent Build</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 0.8em;">Best practices for prompting your agent. <span style="font-size:0.8em; opacity:0.6;">Hover each card for details.</span></p>
+        <div class="guide-cards cards-5">
+          <div class="guide-card has-popout" tabindex="0">
+            <div class="card-color card-color-purple"></div>
+            <h4>Pseudo Code</h4>
+            <p>Remember this concept and use it when you describe what you want.</p>
+            <div class="popout-tooltip" style="width:480px;">
+              <img src="../Assets/Workflows/AI%20Assisted%20Programming/Pseudocode.webp" alt="Pseudocode example" style="width:100%;display:block;margin:0 0 10px;border:1px solid rgba(255,255,255,0.25);">
+              <p>A simplified, human-readable description of what your program should do &mdash; written in plain language, not actual code. It lets you think through logic without worrying about syntax.</p>
+              <p style="margin-top: 0.4em; font-style: italic;">&ldquo;When the user clicks the canvas, generate a new shape at that position. Each shape should inherit the color of the previous one but rotate 15 degrees.&rdquo;</p>
+            </div>
+          </div>
+          <div class="guide-card has-popout" tabindex="0">
+            <div class="card-color card-color-green"></div>
+            <h4>Be Descriptive</h4>
+            <p>The more detail you give, the better the output.</p>
+            <div class="popout-tooltip">
+              <p>Instead of &ldquo;make it look nice,&rdquo; say: &ldquo;Use a dark background (#0a0a0a), thin white lines, and animate them with a sine wave that oscillates every 3 seconds.&rdquo;</p>
+              <p style="margin-top: 0.4em; font-style: italic;">Break the project into components: layout, interaction, animation, color, typography. Describe each one separately.</p>
+            </div>
+          </div>
+          <div class="guide-card has-popout" tabindex="0">
+            <div class="card-color card-color-coral"></div>
+            <h4>Think Like a Composer</h4>
+            <p>Each chat is a different musician in your orchestra.</p>
+            <div class="popout-tooltip">
+              <p>Every musician in an orchestra has a strength. Treat each chat the same way &mdash; one for planning, one for building, one for troubleshooting, one for editing, one for critique. Don&rsquo;t cross-pollinate.</p>
+            </div>
+          </div>
+          <div class="guide-card has-popout" tabindex="0">
+            <div class="card-color card-color-blue"></div>
+            <h4>UI Testing with Playwright CLI</h4>
+            <p>Let your agent do the testing for you.</p>
+            <div class="popout-tooltip">
+              <p>Playwright CLI lets your agent open a real browser, interact with your UI, and verify it works &mdash; all without you lifting a finger. Describe what to test and let Claude run it.</p>
+              <p style="margin-top:0.5em;"><a href="https://playwright.dev/" target="_blank" style="color:var(--accent-blue);">playwright.dev</a></p>
+            </div>
+          </div>
+          <div class="guide-card">
+            <div class="card-color card-color-narrative"></div>
+            <h4>Model Selection</h4>
+            <p>Switch models depending on the complexity of the task.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 7 Continued: Skills -->
+      <section class="slide-guide" data-theme="blue" data-transition="slide">
+        <span class="step-badge">Step 7 — Continued</span>
+        <h3>Let Your Agent Build</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 0.8em;">Supercharge your agent with <strong>Skills</strong></p>
+        <div class="guide-card has-popout" tabindex="0" style="max-width: 700px; margin: 0 auto 1em;">
+          <h4>What Are Skills?</h4>
+          <p>Skills are reusable prompt files that give your agent specialized knowledge and capabilities. Install a skill once, then invoke it with a slash command &mdash; like giving your agent a new superpower on demand.</p>
+          <div class="popout-tooltip" style="width:520px;">
+            <p>A <strong>Skill</strong> is a markdown file (stored in <code style="background:rgba(255,255,255,0.12);padding:0.15em 0.4em;">.claude/skills/</code>) that contains expert-level instructions for a specific domain. When you type its slash command, the skill&rsquo;s full prompt loads into the conversation &mdash; turning your general-purpose agent into a specialist.</p>
+            <p style="margin-top:0.5em;">Skills can be shared, versioned, and stacked. Think of them as plug-in expertise.</p>
+          </div>
+        </div>
+        <div class="guide-cards cards-2">
+          <div class="guide-card has-popout" tabindex="0">
+            <div class="card-color card-color-purple"></div>
+            <h4>UI/UX Pro Max</h4>
+            <p>Design intelligence for building professional UI/UX across multiple platforms.</p>
+            <div class="popout-tooltip" style="width:480px;">
+              <p>An AI skill that gives your agent deep knowledge of UI/UX best practices &mdash; layout, typography, color theory, accessibility, responsive design, and platform conventions. It turns your coding agent into a design-aware builder.</p>
+              <p style="margin-top:0.5em;"><a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill" target="_blank" style="color:var(--accent-blue);">github.com/nextlevelbuilder/ui-ux-pro-max-skill</a></p>
+            </div>
+          </div>
+          <div class="guide-card has-popout" tabindex="0">
+            <div class="card-color card-color-green"></div>
+            <h4>Skill Creator</h4>
+            <p>Anthropic&rsquo;s official skill for building, testing, and iterating on new skills.</p>
+            <div class="popout-tooltip" style="width:480px;">
+              <p>Invoke with <code style="background:rgba(255,255,255,0.12);padding:0.15em 0.4em;">/skill-creator</code> &mdash; it has four modes: <strong>Create</strong>, <strong>Eval</strong>, <strong>Improve</strong>, and <strong>Benchmark</strong>. Describe what you want the skill to do and it generates the prompt file, runs evals, and iterates until it&rsquo;s production-ready.</p>
+              <p style="margin-top:0.5em;"><a href="https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md" target="_blank" style="color:var(--accent-blue);">github.com/anthropics/skills &mdash; Skill Creator</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 7 Continued: Slash Commands -->
+      <section class="slide-guide" data-theme="blue" data-transition="slide">
+        <span class="step-badge">Step 7 — Continued</span>
+        <h3>Let Your Agent Build</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 0.8em;">Useful /commands to know about</p>
+        <div class="guide-cards cards-3">
+          <div class="guide-card has-popout" tabindex="0">
+            <div class="card-color card-color-purple"></div>
+            <h4>/model</h4>
+            <p>Switch models mid-session. Use Opus for hard problems, Haiku for fast simple tasks.</p>
+            <div class="popout-tooltip" style="width:520px;">
+              <img src="../Assets/Workflows/AI%20Assisted%20Programming/models.png" alt="Claude model selection guide" style="width:100%;display:block;margin:0 0 10px;border:1px solid rgba(255,255,255,0.25);">
+              <p>Not every task needs the most powerful model. Match the model to the job:</p>
+              <p style="margin-top:0.4em;"><strong>Opus</strong> &mdash; complex reasoning, architecture decisions, hard bugs</p>
+              <p style="margin-top:0.4em;"><strong>Sonnet</strong> &mdash; everyday building, writing, iteration</p>
+              <p style="margin-top:0.4em;"><strong>Haiku</strong> &mdash; fast, lightweight tasks: quick edits, simple lookups, high-volume automation where speed and cost matter</p>
+            </div>
+          </div>
+          <div class="guide-card">
+            <div class="card-color card-color-blue"></div>
+            <h4>/clear</h4>
+            <p>Wipe the conversation and start fresh. Use between features to keep context clean.</p>
+          </div>
+          <div class="guide-card has-popout" tabindex="0">
+            <div class="card-color card-color-green"></div>
+            <h4>/compact</h4>
+            <p>Manually summarize the session to free up context space before hitting the limit.</p>
+            <div class="popout-tooltip" style="width:520px;">
+              <img src="../Assets/Workflows/AI%20Assisted%20Programming/autoCompact.png" alt="Auto compact context warning" style="width:100%;display:block;margin:0 0 10px;border:1px solid rgba(255,255,255,0.25);">
+              <p>When you hit the context limit, the agent auto-compacts: it summarizes earlier work to free up space but loses detail. Use <strong>/compact</strong> manually before that happens, or start a new chat when finishing a feature.</p>
+            </div>
+          </div>
+          <div class="guide-card">
+            <div class="card-color card-color-purple"></div>
+            <h4>/mcp</h4>
+            <p>Manage your MCP servers (plugins) &mdash; connect Figma, GitHub, browser control, and more.</p>
+          </div>
+          <div class="guide-card">
+            <div class="card-color card-color-default"></div>
+            <h4>/plugin</h4>
+            <p>Install and manage Claude Code plugins &mdash; extend your agent with custom tools and integrations.</p>
+          </div>
+          <div class="guide-card">
+            <div class="card-color card-color-coral"></div>
+            <h4>/context</h4>
+            <p>Shows a snapshot of what&rsquo;s currently loaded into your conversation&rsquo;s context window &mdash; everything consuming tokens right now.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bonus Tip: settings.local.json -->
+      <section class="slide-guide" data-theme="blue" data-transition="slide">
+        <span class="step-badge">Bonus Tip</span>
+        <h3>Stop Clicking &ldquo;Accept&rdquo;</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 0.6em; font-size: 0.85em;">Open Explorer, navigate to the <code style="background:rgba(255,255,255,0.12);padding:0.15em 0.4em;">.claude</code> folder, open <code style="background:rgba(255,255,255,0.12);padding:0.15em 0.4em;">settings.local.json</code>, and paste in the following permissions.</p>
+        <div class="guide-card" style="max-width: 520px; margin: 0 auto; text-align: left;">
+          <pre style="font-family: 'Courier New', monospace; font-size: 0.65em; line-height: 1.5; margin: 0; white-space: pre; color: #fff;">{
+  "permissions": {
+    "allow": [
+      <span style="color:#ffcc00;font-weight:bold;">"Bash"</span>,
+      "Read",
+      <span style="color:#ffcc00;font-weight:bold;">"Edit"</span>,
+      <span style="color:#ffcc00;font-weight:bold;">"Write"</span>,
+      <span style="color:#ffcc00;font-weight:bold;">"MultiEdit"</span>,
+      "Grep", "Glob", "LS",
+      <span style="color:#ffcc00;font-weight:bold;">"WebFetch"</span>,
+      <span style="color:#ffcc00;font-weight:bold;">"WebSearch"</span>,
+      "NotebookRead",
+      "NotebookEdit",
+      "TodoRead", "TodoWrite"
+    ]
+  }
+}</pre>
+        </div>
+        <p style="color: var(--text-secondary); margin-top: 0.5em; font-size: 0.75em;"><span style="color:#ffcc00;">Highlighted</span> = common requests from Claude.</p>
+      </section>
+
+      <!-- Step 8: Edit Out AI Aesthetics -->
+      <section class="slide-guide" data-theme="blue" data-transition="slide">
+        <span class="step-badge">Step 8</span>
+        <h3>Edit Out the AI Aesthetic</h3>
+        <div class="guide-cards cards-2" style="align-items: start;">
+          <div class="guide-card">
+            <h4>Make It Yours</h4>
+            <p>After your agent builds, go back and strip out the signs of AI-generated design.</p>
+            <p style="margin-top: 0.8em;">Copy and paste the list to the right &mdash; or create your own updated version based on what you learned in the AI landscape phase &mdash; into the chat and double check that it avoided these designs.</p>
+            <p style="margin-top: 0.8em;">Also put the list in your PRD so it knows not to use it from the beginning.</p>
+          </div>
+          <div class="guide-card">
+            <h4>Things That Look Like AI</h4>
+            <ul style="text-align: left; line-height: 1.7; font-size: 0.85em;">
+              <li><strong>Beveled corners</strong> on everything</li>
+              <li><strong>Default AI fonts</strong> (Inter, system defaults)</li>
+              <li><strong>Left-side menu bars</strong></li>
+              <li><strong>Cookie-cutter layouts</strong></li>
+              <li><strong>Generic gradient choices</strong></li>
+              <li><strong>Affordance design that glows</strong></li>
+              <li><strong>Overly polished glass/blur effects</strong></li>
+              <li><strong>Centered hero sections with stock phrases</strong></li>
+              <li><strong>Floating cards with drop shadows</strong></li>
+              <li><strong>Icon-heavy minimal dashboards</strong></li>
+            </ul>
+            <p style="margin-top: 0.8em; font-size: 0.85em;"><strong>Example:</strong> <a href="https://openclaw.ai/" target="_blank" style="color: var(--accent-blue);">openclaw.ai</a></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 9: Thank the AI -->
+      <section class="slide-guide" data-theme="blue" data-transition="slide">
+        <span class="step-badge">Step 9</span>
+        <h3>Don&rsquo;t Forget to Thank the AI</h3>
+        <div class="guide-card" style="max-width: 700px; margin: 0 auto;">
+          <p style="font-size: 1.1em;">So they know not to kill you after the singularity.</p>
+        </div>
+      </section>
+
+    </div><!-- /slides -->
+  </div><!-- /reveal -->
+
+  <!-- Reveal.js core JS -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+
+  <!-- p5.js backgrounds -->
+  <script src="js/backgrounds.js"></script>
+
+  <!-- Presentation JS (Reveal init, popouts, particles, image enlarge) -->
+  <script src="js/presentation.js"></script>
+</body>
+</html>

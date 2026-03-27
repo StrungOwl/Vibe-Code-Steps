@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Vibe Code Process & Tips — Sydney Parks</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Erica+One&family=Lato:wght@300;400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000;
+      --white: #fff;
+      --bg-card: #111;
+      --text-primary: #fff;
+      --text-secondary: #c0c0c0;
+      --text-dim: #777;
+      --card-border: rgba(255,255,255,0.18);
+      --accent-purple: #a78bfa;
+      --accent-green: #4ade80;
+      --accent-coral: #f87171;
+      --accent-blue: #60a5fa;
+      --accent-yellow: #facc15;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--text-primary);
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding: 48px 56px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ── Header ── */
+    .doc-header {
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 24px;
+      margin-bottom: 40px;
+    }
+    .doc-header .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(96,165,250,0.15);
+      border: 1px solid rgba(96,165,250,0.35);
+      color: var(--accent-blue);
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .doc-header h1 {
+      font-family: 'Erica One', sans-serif;
+      font-size: 2.4em;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+    .doc-header p {
+      color: var(--text-dim);
+      margin-top: 6px;
+      font-size: 0.95em;
+    }
+
+    /* ── Step block ── */
+    .step {
+      margin-bottom: 36px;
+      page-break-inside: avoid;
+    }
+    .step-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--card-border);
+      color: var(--text-dim);
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .step h2 {
+      font-family: 'Erica One', sans-serif;
+      font-size: 1.5em;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    .step .subtitle {
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      font-size: 0.9em;
+    }
+
+    /* ── Cards ── */
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      flex: 1;
+      min-width: 180px;
+    }
+    .card h4 {
+      font-size: 0.9em;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .card p, .card li {
+      font-size: 0.8em;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .card ul li::before { content: "• "; opacity: 0.5; }
+
+    /* color bar accent */
+    .bar { height: 3px; border-radius: 2px; margin-bottom: 10px; }
+    .bar-purple { background: var(--accent-purple); }
+    .bar-green  { background: var(--accent-green); }
+    .bar-coral  { background: var(--accent-coral); }
+    .bar-blue   { background: var(--accent-blue); }
+    .bar-yellow { background: var(--accent-yellow); }
+    .bar-gray   { background: #555; }
+
+    /* ── Single card ── */
+    .single-card {
+      background: var(--bg-card);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 18px 22px;
+      max-width: 600px;
+    }
+    .single-card p { color: var(--text-secondary); font-size: 0.85em; line-height: 1.8; }
+    .single-card strong { color: var(--text-primary); }
+
+    /* ── PRE / code block ── */
+    .code-block {
+      background: var(--bg-card);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 18px 22px;
+      max-width: 480px;
+    }
+    pre {
+      font-family: 'Courier New', monospace;
+      font-size: 0.75em;
+      line-height: 1.6;
+      color: var(--text-primary);
+      white-space: pre;
+    }
+    .highlight { color: var(--accent-yellow); font-weight: bold; }
+
+    /* ── Divider ── */
+    hr { border: none; border-top: 1px solid var(--card-border); margin: 32px 0; }
+
+    /* ── Tip callout ── */
+    .callout {
+      border-left: 3px solid var(--accent-yellow);
+      background: rgba(250,204,21,0.06);
+      border-radius: 0 6px 6px 0;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: 0.82em;
+      color: var(--text-secondary);
+    }
+    .callout strong { color: var(--accent-yellow); }
+
+    /* ── Print ── */
+    @media print {
+      body { padding: 28px 36px; font-size: 12px; }
+      .step { page-break-inside: avoid; margin-bottom: 24px; }
+      .cards { gap: 8px; }
+      .card { padding: 12px 14px; }
+    }
+
+    @page {
+      size: A4;
+      margin: 20mm 18mm;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="doc-header">
+    <div class="badge">Layer 4 · Palettable Programming</div>
+    <h1>My Vibe Code Process &amp; Tips</h1>
+    <p>Sydney Parks &mdash; sydneyparks.io</p>
+  </div>
+
+  <!-- Step 1 -->
+  <div class="step">
+    <div class="step-badge">Step 1</div>
+    <h2>Learn the Fundamentals</h2>
+    <div class="single-card">
+      <h4>Programming Basics</h4>
+      <p><strong>loops</strong>, <strong>conditional statements</strong>, <strong>variable types</strong>, <strong>functions</strong>, and <strong>data structures</strong></p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Step 2 -->
+  <div class="step">
+    <div class="step-badge">Step 2</div>
+    <h2>Choose Your Tool</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="bar bar-purple"></div>
+        <h4>Cursor</h4>
+        <p>AI-native code editor with built-in agent capabilities and multi-model support.</p>
+      </div>
+      <div class="card">
+        <div class="bar bar-green"></div>
+        <h4>Google Antigravity</h4>
+        <p>Google's agent-first IDE powered by Gemini. Free public preview. Agents plan, execute, and verify autonomously.</p>
+      </div>
+      <div class="card">
+        <div class="bar bar-blue"></div>
+        <h4>VS Code + Claude Code</h4>
+        <p>Claude's CLI agent running inside VS Code. Terminal-native, powerful, and deeply integrated.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Step 3 -->
+  <div class="step">
+    <div class="step-badge">Step 3</div>
+    <h2>Understand the Ever-Evolving AI Landscape</h2>
+    <p class="subtitle">Choose Your Agentic Platform</p>
+    <div class="cards" style="margin-bottom: 12px;">
+      <div class="card">
+        <div class="bar bar-coral"></div>
+        <h4>Claude Code</h4>
+        <p>Anthropic's agentic coding CLI. Lives in your terminal, understands your entire codebase, and helps you code faster through natural language. Can read issues, write code, run tests, and submit PRs autonomously — with extensions for VS Code, Cursor, and JetBrains.</p>
+      </div>
+      <div class="card">
+        <div class="bar bar-purple"></div>
+        <h4>Codex (OpenAI)</h4>
+        <p>OpenAI's cloud-based agentic coding platform. Works on many tasks in parallel using isolated cloud environments. Includes a CLI, an app, and IDE extensions — supporting autonomous workflows like issue triage, CI/CD monitoring, and code review.</p>
+      </div>
+    </div>
+    <p class="subtitle">Agent Harnesses</p>
+    <div class="cards">
+      <div class="card">
+        <div class="bar bar-gray"></div>
+        <h4>PAI — Personal AI Infrastructure</h4>
+        <p>A Claude Code-native agentic platform that connects goals, skills, and memory into a unified system. Studies and formulates best practices for responsible AI development.</p>
+      </div>
+      <div class="card">
+        <div class="bar bar-gray"></div>
+        <h4>OpenClaw</h4>
+        <p>Open-source, self-hosted AI agent daemon connecting 12+ messaging platforms (WhatsApp, Telegram, Discord, iMessage, etc.) to AI coding agents. 100+ preconfigured skills. No telemetry.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Step 4 -->
+  <div class="step">
+    <div class="step-badge">Step 4</div>
+    <h2>Research Libraries</h2>
+    <p class="subtitle">Use AI to research what libraries and frameworks you'll need <em>before</em> your agent starts building.</p>
+    <div class="cards">
+      <div class="card">
+        <h4>Websites</h4>
+        <ul>
+          <li><strong>React</strong> — component-based UI</li>
+          <li><strong>Next.js</strong> — full-stack React framework</li>
+          <li><strong>Tailwind CSS</strong> — utility-first styling</li>
+          <li><strong>GSAP</strong> — scroll &amp; motion animation</li>
+          <li><strong>Astro</strong> — fast static sites</li>
+          <li><strong>Svelte</strong> — lightweight reactive UI</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Apps</h4>
+        <ul>
+          <li><strong>Express / Fastify</strong> — Node.js server</li>
+          <li><strong>Firebase</strong> — auth, database, hosting</li>
+          <li><strong>Socket.io</strong> — real-time communication</li>
+          <li><strong>Electron</strong> — desktop apps with JS</li>
+          <li><strong>React Native</strong> — cross-platform mobile</li>
+          <li><strong>Supabase</strong> — open-source backend</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Art &amp; Creative</h4>
+        <ul>
+          <li><strong>p5.js</strong> — creative coding &amp; sketches</li>
+          <li><strong>Three.js</strong> — 3D graphics &amp; WebGL</li>
+          <li><strong>Tone.js</strong> — audio synthesis &amp; music</li>
+          <li><strong>MediaPipe</strong> — face, hand &amp; body tracking</li>
+          <li><strong>ml5.js</strong> — friendly machine learning</li>
+          <li><strong>Shader Park</strong> — code-driven shaders</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Step 5 -->
+  <div class="step">
+    <div class="step-badge">Step 5</div>
+    <h2>Generate a Project Plan</h2>
+    <div class="cards">
+      <div class="card">
+        <h4>PRD — Product Requirements Document</h4>
+        <p>A structured document that defines what you're building.</p>
+        <p style="margin-top:8px; color: var(--text-dim);">Use your preferred LLM to help you write and refine it.</p>
+      </div>
+      <div class="card">
+        <h4>What to Include</h4>
+        <ul>
+          <li>Project overview</li>
+          <li>Libraries &amp; frameworks</li>
+          <li>MCP servers &amp; APIs</li>
+          <li>Playwright CLI</li>
+          <li>Deployment platform</li>
+          <li>Interaction &amp; common behaviors</li>
+          <li>Visual identity</li>
+          <li>Anti-criteria</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Step 6 -->
+  <div class="step">
+    <div class="step-badge">Step 6</div>
+    <h2>Generate a Design</h2>
+    <div class="single-card">
+      <p>You can feed this into your chat so it can "see" what you want it to build.</p>
+      <ul style="margin-top:10px; list-style:none; padding:0; font-size:0.9em; line-height:2;">
+        <li>• <strong>Sketch</strong></li>
+        <li>• <strong>Figma</strong></li>
+        <li>• <strong>AI Image Generation</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Step 7 -->
+  <div class="step">
+    <div class="step-badge">Step 7</div>
+    <h2>Let Your Agent Build</h2>
+    <p class="subtitle">Best practices for prompting your agent.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="bar bar-purple"></div>
+        <h4>Pseudo Code</h4>
+        <p>A simplified, human-readable description of what your program should do — written in plain language. Think through logic without worrying about syntax.</p>
+        <p style="margin-top:8px; font-style:italic; color: var(--text-dim);">"When the user clicks the canvas, generate a new shape at that position. Each shape should inherit the color of the previous one but rotate 15 degrees."</p>
+      </div>
+      <div class="card">
+        <div class="bar bar-green"></div>
+        <h4>Be Descriptive</h4>
+        <p>The more detail you give, the better the output. Instead of "make it look nice," say: "Use a dark background (#0a0a0a), thin white lines, and animate them with a sine wave that oscillates every 3 seconds."</p>
+        <p style="margin-top:8px; font-style:italic; color: var(--text-dim);">Break into components: layout, interaction, animation, color, typography. Describe each one separately.</p>
+      </div>
+      <div class="card">
+        <div class="bar bar-coral"></div>
+        <h4>Think Like a Composer</h4>
+        <p>Every musician in an orchestra has a strength. Treat each chat the same way — one for planning, one for building, one for troubleshooting, one for editing, one for critique. Don't cross-pollinate.</p>
+      </div>
+      <div class="card">
+        <div class="bar bar-blue"></div>
+        <h4>UI Testing with Playwright CLI</h4>
+        <p>Playwright CLI lets your agent open a real browser, interact with your UI, and verify it works — all without you lifting a finger. Describe what to test and let Claude run it.</p>
+      </div>
+      <div class="card">
+        <div class="bar bar-gray"></div>
+        <h4>Model Selection</h4>
+        <p>Switch models depending on the complexity of the task.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Step 7 Continued -->
+  <div class="step">
+    <div class="step-badge">Step 7 — Continued</div>
+    <h2>Let Your Agent Build</h2>
+    <p class="subtitle">Useful /commands to know about</p>
+    <div class="cards">
+      <div class="card">
+        <div class="bar bar-purple"></div>
+        <h4>/model</h4>
+        <p>Switch models mid-session. Match the model to the job:</p>
+        <ul style="margin-top:6px;">
+          <li><strong>Opus</strong> — complex reasoning, architecture, hard bugs</li>
+          <li><strong>Sonnet</strong> — everyday building, writing, iteration</li>
+          <li><strong>Haiku</strong> — fast, lightweight tasks &amp; high-volume automation</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="bar bar-blue"></div>
+        <h4>/clear</h4>
+        <p>Wipe the conversation and start fresh. Use between features to keep context clean.</p>
+      </div>
+      <div class="card">
+        <div class="bar bar-green"></div>
+        <h4>/compact</h4>
+        <p>Manually summarize the session to free up context space before hitting the limit. Use before auto-compact kicks in, or start a new chat when finishing a feature.</p>
+      </div>
+      <div class="card">
+        <div class="bar bar-purple"></div>
+        <h4>/mcp</h4>
+        <p>Manage your MCP servers (plugins) — connect Figma, GitHub, browser control, and more.</p>
+      </div>
+      <div class="card">
+        <div class="bar bar-gray"></div>
+        <h4>/plugin</h4>
+        <p>Install and manage Claude Code plugins — extend your agent with custom tools and integrations.</p>
+      </div>
+      <div class="card">
+        <div class="bar bar-coral"></div>
+        <h4>/context</h4>
+        <p>Shows a snapshot of what's currently loaded into your conversation's context window — everything consuming tokens right now.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Bonus Tip -->
+  <div class="step">
+    <div class="step-badge">Bonus Tip</div>
+    <h2>Stop Clicking "Accept"</h2>
+    <p class="subtitle">Open Explorer, navigate to the <code style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:3px;">.claude</code> folder, open <code style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:3px;">settings.local.json</code>, and paste in the following permissions.</p>
+    <div class="code-block">
+      <pre>{
+  "permissions": {
+    "allow": [
+      <span class="highlight">"Bash"</span>,
+      "Read",
+      <span class="highlight">"Edit"</span>,
+      <span class="highlight">"Write"</span>,
+      <span class="highlight">"MultiEdit"</span>,
+      "Grep", "Glob", "LS",
+      <span class="highlight">"WebFetch"</span>,
+      <span class="highlight">"WebSearch"</span>,
+      "NotebookRead",
+      "NotebookEdit",
+      "TodoRead", "TodoWrite"
+    ]
+  }
+}</pre>
+    </div>
+    <div class="callout"><strong>Highlighted</strong> = common requests from Claude. Bash (shell commands), Edit (file diffs), Write (create/overwrite), MultiEdit (batch edits), WebFetch (pull from URL), WebSearch (search the web).</div>
+  </div>
+
+  <hr>
+
+  <!-- Step 8 -->
+  <div class="step">
+    <div class="step-badge">Step 8</div>
+    <h2>Edit Out the AI Aesthetic</h2>
+    <div class="cards">
+      <div class="card">
+        <h4>Make It Yours</h4>
+        <p>After your agent builds, go back and strip out the signs of AI-generated design. Copy the list to the right into your chat and double check. Also put the list in your PRD so it knows from the beginning.</p>
+      </div>
+      <div class="card">
+        <h4>Things That Look Like AI</h4>
+        <ul>
+          <li><strong>Beveled corners</strong> on everything</li>
+          <li><strong>Default AI fonts</strong> (Inter, system defaults)</li>
+          <li><strong>Left-side menu bars</strong></li>
+          <li><strong>Cookie-cutter layouts</strong></li>
+          <li><strong>Generic gradient choices</strong></li>
+          <li><strong>Affordance design that glows</strong></li>
+          <li><strong>Overly polished glass/blur effects</strong></li>
+          <li><strong>Centered hero sections with stock phrases</strong></li>
+          <li><strong>Floating cards with drop shadows</strong></li>
+          <li><strong>Icon-heavy minimal dashboards</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Step 9 -->
+  <div class="step">
+    <div class="step-badge">Step 9</div>
+    <h2>Don't Forget to Thank the AI</h2>
+    <div class="single-card">
+      <p style="font-size:1.05em;">So they know not to kill you after the singularity.</p>
+    </div>
+  </div>
+
+</body>
+</html>

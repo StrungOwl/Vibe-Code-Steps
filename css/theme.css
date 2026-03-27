@@ -1,0 +1,547 @@
+/* Sydney Parks - "How to Vibe Code" Standalone
+   Op Art Design System - Bridget Riley B&W
+   Extracted subset for step-by-step guide slides */
+
+@import url('https://fonts.googleapis.com/css2?family=Erica+One&family=Lato:wght@300;400;700&display=swap');
+
+/* ============================================
+   DESIGN TOKENS - PURE BLACK & WHITE
+   ============================================ */
+:root {
+  --black: #000000;
+  --white: #FFFFFF;
+  --bg-card: #0C0C0C;
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #C0C0C0;
+  --text-dim: #777777;
+
+  --card-border: rgba(255, 255, 255, 0.15);
+  --card-border-strong: rgba(255, 255, 255, 0.35);
+}
+
+/* ============================================
+   REVEAL.JS BASE OVERRIDES
+   ============================================ */
+
+.reveal-viewport {
+  background: var(--black) !important;
+}
+
+/* ============================================
+   RILEY BACKGROUND CANVAS
+   ============================================ */
+#riley-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  transition: opacity 0.6s ease;
+}
+
+#riley-bg canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.reveal {
+  font-family: 'Lato', sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 1;
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section {
+  padding: 60px 80px;
+  box-sizing: border-box;
+  background: transparent;
+  cursor: default;
+}
+
+.reveal .slides > section,
+.reveal .slides > section > section {
+  line-height: 1.6;
+}
+
+/* ============================================
+   TYPOGRAPHY - Erica One + Lato
+   ============================================ */
+
+.reveal h1, .reveal h2, .reveal h3,
+.reveal h4, .reveal h5, .reveal h6 {
+  font-family: 'Erica One', cursive;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin: 0 0 0.6em 0;
+  text-transform: uppercase;
+}
+
+.reveal h1 { font-size: 4.0em; }
+.reveal h2 { font-size: 3.0em; }
+.reveal h3 { font-size: 2.0em; }
+
+.reveal p {
+  margin: 0 0 1em 0;
+  line-height: 1.7;
+  font-size: 1.0em;
+}
+
+.reveal strong {
+  color: var(--white);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+
+.reveal em {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Accent classes */
+.highlight {
+  font-weight: 700;
+  background: var(--white);
+  color: var(--black);
+  padding: 0 8px;
+  margin: 0 2px;
+}
+.accent-pink { color: var(--white); font-weight: 700; text-decoration: underline wavy; text-underline-offset: 4px; }
+.accent-blue { color: var(--white); font-weight: 700; border-bottom: 3px solid var(--white); }
+.accent-green { color: var(--white); font-weight: 700; font-style: italic; }
+
+/* ============================================
+   SECTION HEADERS
+   ============================================ */
+
+.section-header {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.section-badge {
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  padding: 10px 28px;
+  margin-bottom: 1em;
+  background: var(--white);
+  color: var(--black);
+  border: none;
+  position: relative;
+  z-index: 1;
+}
+
+.badge-pink, .badge-blue,
+.badge-green {
+  color: var(--black);
+  border-color: transparent;
+}
+
+.section-header h2 {
+  font-size: 4.0em;
+  margin-bottom: 0.3em;
+  position: relative;
+  z-index: 1;
+}
+
+.section-header .section-desc {
+  font-size: 1.1em;
+  color: var(--text-secondary);
+  font-weight: 400;
+  max-width: 750px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.theme-purple h2, .theme-pink h2,
+.theme-blue h2, .theme-green h2 {
+  color: var(--white);
+}
+
+/* ============================================
+   CARD COLOR STRIPES
+   ============================================ */
+
+.card-color-purple,
+.card-color-green,
+.card-color-coral,
+.card-color-blue,
+.card-color-default,
+.card-color-narrative { background: var(--white); }
+
+.guide-card .card-color {
+  width: 100%;
+  height: 6px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+
+/* ============================================
+   HOW-TO GUIDE SLIDES
+   ============================================ */
+
+.slide-guide {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center !important;
+}
+
+.slide-guide h3 {
+  font-size: 2.0em;
+  margin-bottom: 0.5em;
+}
+
+.guide-cards {
+  display: grid;
+  gap: 16px;
+  margin-top: 0.8em;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: center;
+}
+
+.guide-cards.cards-6 { grid-template-columns: repeat(3, 1fr); }
+.guide-cards.cards-5 { grid-template-columns: repeat(5, 1fr); max-width: 1700px; }
+.guide-cards.cards-5 .guide-card { padding: 22px 14px; }
+.guide-cards.cards-4 { grid-template-columns: repeat(4, 1fr); }
+.guide-cards.cards-3 { grid-template-columns: repeat(3, 1fr); }
+.guide-cards.cards-2 { grid-template-columns: repeat(2, 1fr); }
+
+.guide-card {
+  background: var(--bg-card);
+  border: 2px solid var(--card-border-strong);
+  padding: 34px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.guide-card.has-popout,
+.harness-card.has-popout {
+  overflow: visible;
+}
+
+/* Unique top decoration per card position */
+.guide-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--white) 0px,
+    var(--white) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+
+.guide-card:nth-child(2)::before {
+  background: var(--white);
+}
+
+.guide-card:nth-child(3)::before {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--white) 0px,
+    var(--white) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+.guide-card.has-popout:hover {
+  background: var(--white);
+  color: var(--black);
+  transition: all 0.3s ease;
+}
+
+.guide-card.has-popout:hover h4,
+.guide-card.has-popout:hover p {
+  color: var(--black);
+}
+
+.guide-card h4 {
+  font-family: 'Erica One', cursive;
+  font-size: 1.15em;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+}
+
+.guide-card p {
+  font-size: 0.8em;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ============================================
+   HARNESS CARDS
+   ============================================ */
+
+.harness-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 1em;
+  max-width: 900px;
+}
+
+.harness-card {
+  background: var(--bg-card);
+  border: 2px solid var(--card-border-strong);
+  padding: 24px;
+  text-align: left;
+  border-left: 6px solid var(--white);
+}
+
+.harness-card.has-popout:hover {
+  background: var(--white);
+  color: var(--black);
+  transition: all 0.3s ease;
+}
+
+.harness-card.has-popout:hover h4,
+.harness-card.has-popout:hover p {
+  color: var(--black);
+}
+
+.harness-card h4 {
+  font-family: 'Erica One', cursive;
+  font-size: 1em;
+  color: var(--white);
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+}
+
+.harness-card p {
+  font-size: 0.75em;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ============================================
+   POPOUT TOOLTIPS
+   ============================================ */
+
+.has-popout {
+  cursor: pointer;
+}
+
+.popout-tooltip {
+  display: none;
+  position: fixed;
+  background: #0a0a0a;
+  border: 2px solid var(--white);
+  padding: 22px 26px;
+  width: 380px;
+  max-width: 90vw;
+  z-index: 9999;
+  box-shadow: none;
+  text-align: left;
+}
+
+.popout-tooltip.visible {
+  display: block;
+}
+
+.popout-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-bottom-color: var(--white);
+}
+
+.popout-tooltip.popout-above::after {
+  bottom: auto;
+  top: 100%;
+  border-bottom-color: transparent;
+  border-top-color: var(--white);
+}
+
+.popout-tooltip h5 {
+  font-family: 'Erica One', cursive;
+  font-size: 1em;
+  color: var(--white);
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+}
+
+.popout-tooltip p {
+  font-size: 0.78em !important;
+  color: #ccc !important;
+  margin: 0 !important;
+  line-height: 1.7;
+}
+
+/* ============================================
+   STEP NUMBER BADGE
+   ============================================ */
+
+.step-badge {
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.65em;
+  font-weight: 700;
+  color: var(--black);
+  background: var(--white);
+  border: none;
+  padding: 6px 20px;
+  margin-bottom: 0.8em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.badge-act {
+  font-size: 0.8em;
+  letter-spacing: 0.3em;
+  padding: 12px 32px;
+}
+
+/* ============================================
+   GLOBAL IMAGE ENLARGE OVERLAY
+   ============================================ */
+
+.img-enlarge-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.img-enlarge-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.img-enlarge-target {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+  border: 2px solid var(--white);
+}
+
+.reveal .slides img {
+  cursor: zoom-in;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+.reveal .slides section.present h1,
+.reveal .slides section.present h2 {
+  animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.reveal .slides section.present h3 {
+  animation: slideInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+.reveal .slides section.present p,
+.reveal .slides section.present .guide-cards,
+.reveal .slides section.present .harness-row {
+  animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   REVEAL.JS UI OVERRIDES
+   ============================================ */
+
+.reveal .progress {
+  height: 4px;
+  color: var(--white);
+}
+
+.reveal .progress span {
+  background: var(--white);
+  transition: width 0.8s cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+
+.reveal .slide-number {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--black);
+  background: var(--white);
+  border: none;
+  padding: 4px 12px;
+  right: 16px;
+  bottom: 16px;
+}
+
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-down {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.reveal .controls .navigate-left:hover,
+.reveal .controls .navigate-right:hover,
+.reveal .controls .navigate-up:hover,
+.reveal .controls .navigate-down:hover {
+  color: var(--white);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .reveal h1 { font-size: 2.8em; }
+  .reveal h2 { font-size: 2.0em; }
+  .guide-cards.cards-6 { grid-template-columns: 1fr; }
+  .guide-cards.cards-5 { grid-template-columns: 1fr; }
+  .guide-cards.cards-4 { grid-template-columns: 1fr; }
+  .guide-cards.cards-3 { grid-template-columns: 1fr; }
+  .guide-cards.cards-2 { grid-template-columns: 1fr; }
+  .harness-row { grid-template-columns: 1fr; }
+}
