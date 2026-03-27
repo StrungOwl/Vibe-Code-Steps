@@ -158,8 +158,8 @@
         <div style="display: flex; gap: 1.2em; justify-content: center; align-items: flex-start; flex-wrap: wrap; max-width: 1100px; margin: 0 auto;">
           <div class="guide-card" style="flex: 1; min-width: 280px; max-width: 380px; text-align: left;">
             <h4>PRD &mdash; Product Requirements Document</h4>
-            <p style="font-size: 0.82em; line-height: 1.7;">A structured document that defines what you're building.</p>
-            <p style="font-size: 0.78em; margin-top: 0.8em; color: var(--text-secondary);">Use your preferred LLM to help you write and refine it.</p>
+            <p style="font-size: 0.82em; line-height: 1.7;">A structured markdown file that lives in your project&rsquo;s explorer&mdash;your coding agent reads it for context on every prompt.</p>
+            <p style="font-size: 0.78em; margin-top: 0.8em; color: var(--text-secondary);">Use your preferred LLM to help you draft and refine it before you start building.</p>
           </div>
           <div class="guide-card" style="flex: 1; min-width: 280px; max-width: 380px;">
             <h4>What to Include</h4>
@@ -428,20 +428,7 @@
   <!-- Presentation JS (Reveal init, popouts, particles, image enlarge) -->
   <script src="js/presentation.js"></script>
 
-  <!-- Spacebar: fragments only, no slide advance -->
-  <script>
-    document.addEventListener('keydown', function (e) {
-      if (e.code === 'Space' || e.keyCode === 32) {
-        e.preventDefault();
-        e.stopPropagation();
-        if (typeof Reveal !== 'undefined' && Reveal.isReady()) {
-          var fragments = Reveal.availableFragments();
-          if (fragments.next) {
-            Reveal.nextFragment();
-          }
-        }
-      }
-    }, true);
-  </script>
+  <!-- Paint drop animation (triggers on load, section transitions, and spacebar) -->
+  <script src="js/paint-intro.js"></script>
 </body>
 </html>
