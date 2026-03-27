@@ -36,6 +36,7 @@
         <div class="guide-card" style="max-width: 700px; margin: 0 auto;">
           <h4>Programming Basics</h4>
           <p><strong>loops</strong>, <strong>conditional statements</strong>, <strong>variable types</strong>, <strong>functions</strong>, and <strong>data structures</strong></p>
+          <p style="margin-top: 0.8em; font-size: 0.8em; font-style: italic; opacity: 0.6;">&hellip;but maybe not for long</p>
         </div>
       </section>
 
@@ -426,5 +427,21 @@
 
   <!-- Presentation JS (Reveal init, popouts, particles, image enlarge) -->
   <script src="js/presentation.js"></script>
+
+  <!-- Spacebar: fragments only, no slide advance -->
+  <script>
+    document.addEventListener('keydown', function (e) {
+      if (e.code === 'Space' || e.keyCode === 32) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (typeof Reveal !== 'undefined' && Reveal.isReady()) {
+          var fragments = Reveal.availableFragments();
+          if (fragments.next) {
+            Reveal.nextFragment();
+          }
+        }
+      }
+    }, true);
+  </script>
 </body>
 </html>
